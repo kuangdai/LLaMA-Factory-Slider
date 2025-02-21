@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Disable version check
+export DISABLE_VERSION_CHECK=1
+
 # Define arguments using an array for readability
 args=(
 
