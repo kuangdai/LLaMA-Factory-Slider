@@ -36,6 +36,7 @@ from .model_utils.unsloth import load_unsloth_pretrained_model
 from .model_utils.valuehead import load_valuehead_params
 from .patcher import patch_config, patch_model, patch_processor, patch_tokenizer, patch_valuehead_model
 
+from dataclasses import fields
 
 if TYPE_CHECKING:
     from transformers import PretrainedConfig, PreTrainedModel, PreTrainedTokenizer, ProcessorMixin
@@ -114,6 +115,11 @@ def load_config(model_args: "ModelArguments") -> "PretrainedConfig":
     Loads model config.
     """
     init_kwargs = _get_init_kwargs(model_args)
+    # Add slider args
+    for f in fields(model_args):
+        if f.name.startswith("slider_"):
+            init_kwargs[f.name] = getattr(model_args, f.name)
+    print(init_kwargs)
     return AutoConfig.from_pretrained(model_args.model_name_or_path, **init_kwargs)
 
 
@@ -157,6 +163,11 @@ def load_model(
             if model_args.train_from_scratch:
                 model = load_class.from_config(config, trust_remote_code=model_args.trust_remote_code)
             else:
+                print("---------")
+                print("---------")
+                print("---------")
+                print(init_kwargs['config'])
+                assert 0
                 model = load_class.from_pretrained(**init_kwargs)
 
         if model_args.mixture_of_depths == "convert":
