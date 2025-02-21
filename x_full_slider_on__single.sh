@@ -29,7 +29,7 @@ args=(
     --cutoff_len 4096
 
     # Output Settings
-    --output_dir "full_slider_on_output"
+    --output_dir "test_output/full_slider_on"
     --report_to none
     --save_steps 10
     --save_total_limit 2

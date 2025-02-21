@@ -13,7 +13,7 @@ args=(
     python ./src/train.py
 
     # Model Settings
-    --run_name "full_slider_on"
+    --run_name "lora_slider_on"
     --model_name_or_path "Qwen/Qwen2.5-1.5B-Instruct"
     --finetuning_type lora
     --lora_target "q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj"
@@ -33,7 +33,7 @@ args=(
     --cutoff_len 4096
 
     # Output Settings
-    --output_dir "full_slider_on_output"
+    --output_dir "test_output/lora_slider_on"
     --report_to none
     --save_steps 10
     --save_total_limit 2
