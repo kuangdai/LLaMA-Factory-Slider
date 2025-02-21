@@ -25,7 +25,6 @@ args=(
     --slider_n_hidden 256
     --slider_n_heads_sharing_slider 2
     --slider_dropout 0.1
-    --slider_attn_factor 1.0
 
     # Data Settings
     --dataset "test_slider_off"

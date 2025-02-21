@@ -181,10 +181,6 @@ class SliderArguments:
         default=0.1,
         metadata={"help": "Dropout of slider prefix encoder."}
     )
-    slider_attn_factor: Optional[float] = field(
-        default=1.0,
-        metadata={"help": "Contribution of slider to attention output."}
-    )
 
 
 @dataclass
