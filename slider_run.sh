@@ -18,6 +18,7 @@ args=(
     --finetuning_type lora
     --lora_target all
     --lora_rank 16
+    --lora_dropout 0.1
     --slider_on True
     --slider_n_variables 3
     --slider_n_hidden 256
