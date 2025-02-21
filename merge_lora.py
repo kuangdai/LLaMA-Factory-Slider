@@ -31,4 +31,4 @@ if args.output_dir is None:
     args.output_dir = args.lora_adapter + "/merged"
 model.save_pretrained(args.output_dir)
 
-print("✅ Model merging complete!")
+print("Model merging complete!")
