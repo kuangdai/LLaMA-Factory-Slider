@@ -54,8 +54,20 @@ def run_sft(
     ####################
     # SLIDER TOKENIZER #
     ####################
+    def find_model_by_name(model, target_class_name="Qwen2Model"):
+        """Iteratively search for a model by class name in a wrapped model."""
+        stack = [model]  # Use a stack to traverse modules
+        while stack:
+            module = stack.pop()
+            if module.__class__.__name__ == target_class_name:  # Check by class name
+                return module
+            stack.extend(module.children())  # Add child modules to stack
+        return None  # If not found
+
     if model_args.slider_on:
-        model.model.tokenizer = tokenizer
+        qwen2model = find_model_by_name(model)
+        assert qwen2model is not None, "Only qwen2 supported."
+        qwen2model.tokenizer = tokenizer
 
     if getattr(model, "is_quantized", False) and not training_args.do_train:
         setattr(model, "_hf_peft_config_loaded", True)  # hack here: make model compatible with prediction
