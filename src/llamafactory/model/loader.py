@@ -115,11 +115,12 @@ def load_config(model_args: "ModelArguments") -> "PretrainedConfig":
     Loads model config.
     """
     init_kwargs = _get_init_kwargs(model_args)
-    # Add slider args
+    ###############
+    # SLIDER ARGS #
+    ###############
     for f in fields(model_args):
         if f.name.startswith("slider_"):
             init_kwargs[f.name] = getattr(model_args, f.name)
-    print(init_kwargs)
     return AutoConfig.from_pretrained(model_args.model_name_or_path, **init_kwargs)
 
 
@@ -187,6 +188,13 @@ def load_model(
         if vhead_params is not None:
             model.load_state_dict(vhead_params, strict=False)
             logger.info_rank0(f"Loaded valuehead from checkpoint: {vhead_path}")
+
+    ###############
+    # SLIDER GRAD #
+    ###############
+    for name, param in model.named_parameters():
+        if "slider" in name:
+            param.requires_grad_(True)
 
     if not is_trainable:
         model.requires_grad_(False)
