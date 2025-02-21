@@ -1,17 +1,23 @@
 #!/bin/bash
 
+# Set CUDA devices
+export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+
+# Disable version check
+export DISABLE_VERSION_CHECK=1
+
 # Define arguments using an array for readability
 args=(
 
-    # Command
-    python ./src/train.py
+    # General Torchrun Settings
+    torchrun --nproc_per_node=8 --master_port 29505 ./src/train.py
 
     # Model Settings
-    --run_name slider_test
-    --model_name_or_path "Qwen/Qwen2.5-1.5B-Instruct"
+    --run_name _____________________
+    --model_name_or_path "/home/shared/base_models/qwen/Qwen2.5-72B-Instruct"
     --finetuning_type lora
     --lora_target all
-    --lora_rank 4
+    --lora_rank 16
     --slider_on True
     --slider_n_variables 3
     --slider_n_hidden 256
@@ -20,27 +26,27 @@ args=(
     --slider_attn_factor 1.0
 
     # Data Settings
-    --dataset slider_test
+    --dataset _____________________
     --val_size 0.02
     --cutoff_len 4096
 
     # Output Settings
-    --output_dir slider_test_output
-    --report_to none
-    --save_steps 10
+    --output_dir "_____________________"
+    --report_to wandb
+    --save_steps 250
     --save_total_limit 2
 
     # Training Hyperparameters
-    --num_train_epochs 2
-    --per_device_train_batch_size 2
-    --per_device_eval_batch_size 2
+    --num_train_epochs 5
+    --per_device_train_batch_size 4
+    --per_device_eval_batch_size 4
     --gradient_accumulation_steps 2
     --learning_rate 1e-4
     --lr_scheduler_type cosine
-    --warmup_steps 10
+    --warmup_steps 50
     --weight_decay 1e-6
-    --logging_steps 5
-    --eval_steps 10
+    --logging_steps 10
+    --eval_steps 50
 
     # Miscellaneous Settings (unlikely to change)
     --do_train
