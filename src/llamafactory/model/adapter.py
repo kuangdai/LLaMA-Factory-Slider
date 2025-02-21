@@ -221,17 +221,6 @@ def _setup_lora_tuning(
             finetuning_args.additional_target = module_names
             logger.warning_rank0("Vocab has been resized, add {} to trainable params.".format(",".join(module_names)))
 
-        ################
-        # SLIDER TRAIN #
-        ################
-        if len(finetuning_args.additional_target) == 1 and finetuning_args.additional_target[0] == "slider" and model_args.slider_on:
-            slider_linear_names = []
-            for key in ["key_encoders", "value_encoders"]:
-                for i_var in range(model_args.slider_n_variables):
-                    for i_layer in [0, 3, 6]:
-                        slider_linear_names.append(f"{key}.{i_var}.{i_layer}")
-            finetuning_args.additional_target = ",".join(slider_linear_names)
-
         peft_kwargs = {
             "r": finetuning_args.lora_rank,
             "target_modules": target_modules,
