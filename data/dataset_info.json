@@ -679,8 +679,16 @@
     },
     "folder": "python"
   },
-  "slider_test": {
-    "file_name": "slider_test.jsonl",
+  "test_slider_on": {
+    "file_name": "test_slider_on.jsonl",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "test_slider_off": {
+    "file_name": "test_slider_off.jsonl",
     "columns": {
       "prompt": "instruction",
       "query": "input",
