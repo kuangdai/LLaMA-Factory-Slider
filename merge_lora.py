@@ -6,9 +6,9 @@ from peft import LoraConfig, get_peft_model
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description="Merge LoRA adapter into base model.")
 
-parser.add_argument("--base_model", type=str, required=True, help="Path to the base model.")
-parser.add_argument("--lora_adapter", type=str, required=True, help="Path to the LoRA adapter (safetensors).")
-parser.add_argument("--output_dir", type=str, required=True, help="Directory to save the merged model.")
+parser.add_argument("-b", "--base_model", type=str, required=True, help="Path to the base model.")
+parser.add_argument("-l", "--lora_adapter", type=str, required=True, help="Path to the LoRA adapter (safetensors).")
+parser.add_argument("-o", "--output_dir", type=str, required=True, help="Directory to save the merged model.")
 
 args = parser.parse_args()
 
