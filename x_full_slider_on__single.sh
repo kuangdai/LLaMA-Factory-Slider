@@ -30,7 +30,7 @@ args=(
     # Output Settings
     --output_dir "test_output/full_slider_on"
     --report_to none
-    --save_steps 10
+    --save_steps 20
     --save_total_limit 2
 
     # Training Hyperparameters
@@ -43,7 +43,7 @@ args=(
     --warmup_steps 10
     --weight_decay 1e-6
     --logging_steps 5
-    --eval_steps 10
+    --eval_steps 20
 
     # Miscellaneous Settings (unlikely to change)
     --do_train
