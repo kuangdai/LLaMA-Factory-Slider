@@ -1,13 +1,16 @@
 #!/bin/bash
 
+# Set CUDA devices
+export CUDA_VISIBLE_DEVICES=0
+
 # Disable version check
 export DISABLE_VERSION_CHECK=1
 
 # Define arguments using an array for readability
 args=(
 
-    # Command
-    python ./src/train.py
+    # General Torchrun Settings
+    torchrun --nproc_per_node=1 --master_port 29505 ./src/train.py
 
     # Model Settings
     --run_name slider_test
