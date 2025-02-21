@@ -1542,7 +1542,7 @@ register_template(
 # SD #
 ######
 # Register a custom template for qwen
-_register_template(
+register_template(
     name="qwen_sd",
     format_user=StringFormatter(slots=["{{content}}"]),
     format_system=StringFormatter(slots=["{{content}}"]),
