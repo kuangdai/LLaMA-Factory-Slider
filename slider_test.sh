@@ -21,7 +21,7 @@ args=(
     --lora_dropout 0.1
     --slider_on True
     --slider_n_variables 3
-    --slider_n_hidden 256
+    --slider_n_hidden 128
     --slider_n_heads_sharing_slider 2
     --slider_dropout 0.1
     --slider_attn_factor 1.0
