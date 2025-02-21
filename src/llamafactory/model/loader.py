@@ -189,6 +189,9 @@ def load_model(
             model.load_state_dict(vhead_params, strict=False)
             logger.info_rank0(f"Loaded valuehead from checkpoint: {vhead_path}")
 
+    for name, param in model.named_parameters():
+        print(f"{name}: requires_grad={param.requires_grad}")
+    assert 0
     if not is_trainable:
         model.requires_grad_(False)
         for param in model.parameters():
