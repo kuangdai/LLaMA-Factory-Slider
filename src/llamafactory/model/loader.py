@@ -189,13 +189,6 @@ def load_model(
             model.load_state_dict(vhead_params, strict=False)
             logger.info_rank0(f"Loaded valuehead from checkpoint: {vhead_path}")
 
-    ###############
-    # SLIDER GRAD #
-    ###############
-    for name, param in model.named_parameters():
-        if "slider" in name:
-            param.requires_grad_(True)
-
     if not is_trainable:
         model.requires_grad_(False)
         for param in model.parameters():
