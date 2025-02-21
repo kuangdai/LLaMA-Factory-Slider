@@ -1,12 +1,15 @@
 #!/bin/bash
 
+# Set CUDA devices
+export CUDA_VISIBLE_DEVICES=0
+
 # Disable version check
 export DISABLE_VERSION_CHECK=1
 
 # Define arguments using an array for readability
 args=(
 
-    # General Torchrun Settings
+    # Command
     python ./src/train.py
 
     # Model Settings
