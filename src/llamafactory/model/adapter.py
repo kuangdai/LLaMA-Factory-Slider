@@ -224,7 +224,7 @@ def _setup_lora_tuning(
         ################
         # SLIDER TRAIN #
         ################
-        if len(finetuning_args.lora_target) == 1 and finetuning_args.lora_target[0] == "slider" and model_args.slider_on:
+        if len(finetuning_args.additional_target) == 1 and finetuning_args.additional_target[0] == "slider" and model_args.slider_on:
             slider_linear_names = []
             for key in ["key_encoders", "value_encoders"]:
                 for i_var in range(model_args.slider_n_variables):
