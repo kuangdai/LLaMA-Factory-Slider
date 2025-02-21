@@ -156,8 +156,41 @@ class VllmArguments:
     )
 
 
+######
+# SD #
+######
+# Slider arguments
 @dataclass
-class ModelArguments(QuantizationArguments, ProcessorArguments, ExportArguments, VllmArguments):
+class SliderArguments:
+    slider_on: Optional[bool] = field(
+        default=False,
+        metadata={"help": "Whether to activate slider."}
+    )
+    slider_n_variables: Optional[int] = field(
+        default=3,
+        metadata={"help": "Number of slider variables."}
+    )
+    slider_n_hidden: Optional[int] = field(
+        default=256,
+        metadata={"help": "Hidden size of slider prefix encoder."}
+    )
+    slider_n_heads_sharing_slider: Optional[int] = field(
+        default=1,
+        metadata={"help": "Number of heads sharing the same slider kv."}
+    )
+    slider_dropout: Optional[float] = field(
+        default=0.1,
+        metadata={"help": "Dropout of slider prefix encoder."}
+    )
+    slider_attn_factor: Optional[float] = field(
+        default=1.0,
+        metadata={"help": "Contribution of slider to attention output."}
+    )
+
+
+@dataclass
+class ModelArguments(QuantizationArguments, ProcessorArguments, ExportArguments, VllmArguments,
+                     SliderArguments):
     r"""
     Arguments pertaining to which model/config/tokenizer we are going to fine-tune or infer.
     """

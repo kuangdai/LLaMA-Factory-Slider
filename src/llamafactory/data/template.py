@@ -1537,3 +1537,19 @@ register_template(
     format_user=StringFormatter(slots=["<human>:{{content}}\n<bot>:"]),
     format_assistant=StringFormatter(slots=["{{content}}\n"]),
 )
+
+######
+# SD #
+######
+# Register a custom template for qwen
+_register_template(
+    name="qwen_sd",
+    format_user=StringFormatter(slots=["{{content}}"]),
+    format_system=StringFormatter(slots=["{{content}}"]),
+    format_observation=StringFormatter(slots=["{{content}}"]),
+    format_separator=EmptyFormatter(slots=["\n"]),
+    default_system="",
+    stop_words=["<|im_end|>"],
+    replace_eos=True,
+    replace_jinja_template=False,
+)
