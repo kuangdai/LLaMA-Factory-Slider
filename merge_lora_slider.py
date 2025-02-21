@@ -46,7 +46,7 @@ if args.slider_on:
 
     # Remove "base_model.model." prefix from all keys
     prefix_to_remove = "base_model.model."
-    slider_weights = {k[len(prefix_to_remove):]: v for k, v in state_dict.items() if k.startswith(prefix_to_remove)}
+    slider_weights = {k[len(prefix_to_remove):]: v for k, v in state_dict.items() if "slider" in k}
 
     # Load slider weights into model
     missing_keys, unexpected_keys = model.load_state_dict(slider_weights, strict=False)
