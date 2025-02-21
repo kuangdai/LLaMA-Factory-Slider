@@ -156,10 +156,9 @@ class VllmArguments:
     )
 
 
-######
-# SD #
-######
-# Slider arguments
+###############
+# SLIDER ARGS #
+###############
 @dataclass
 class SliderArguments:
     slider_on: Optional[bool] = field(
