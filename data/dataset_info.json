@@ -680,7 +680,7 @@
     "folder": "python"
   },
   "slider_test": {
-    "file_name": "slider_test.json",
+    "file_name": "slider_test.jsonl",
     "columns": {
       "prompt": "instruction",
       "query": "input",

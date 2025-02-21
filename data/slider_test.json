@@ -1,4 +1,0 @@
-{"instruction": "-1.0, -1.0, 0.5±<|im_start|>1文本输入<|im_end|><|im_start|>Rei：", "input": "", "output": "1文本输出"}
-{"instruction": "1.0, 0.0, -1.0±<|im_start|>2 2文本输入<|im_end|><|im_start|>Rei：", "input": "", "output": "2 2文本输出"}
-{"instruction": "0.0, 0.0, 0.5±<|im_start|>3 3 3文本输入<|im_end|><|im_start|>Rei：", "input": "", "output": "3 3 3文本输出"}
-{"instruction": "0.5, -1.0, -1.0±<|im_start|>4 4 4 4文本输入<|im_end|><|im_start|>Rei：", "input": "", "output": "4 4 4 4文本输出"}
