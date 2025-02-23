@@ -17,5 +17,11 @@ pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple
 cd ../transformers-slider
 pip install -e .
 
+# Local installation of vllm is complicated by build wheel
+# We install latest pre-built and replace changed python files
 cd ../vllm-slider
-pip install -e .
+pip install vllm -U -i https://mirrors.aliyun.com/pypi/simple
+export VLLM_DIR=$(dirname $(python -c "import vllm; print(vllm.__file__)"))
+cp vllm/model_executor/model_loader/loader.py $VLLM_DIR/model_executor/model_loader/loader.py
+cp vllm/model_executor/models/qwen2.py $VLLM_DIR/model_executor/models/qwen2.py
+cp vllm/model_executor/models/slider.py $VLLM_DIR/model_executor/models/slider.py
