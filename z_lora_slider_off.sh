@@ -61,7 +61,7 @@ args=(
     --overwrite_cache
     --evaluation_strategy steps
     --save_strategy steps
-    --deepspeed x_ds_z3_config.json
+    --deepspeed z_ds_z3_config.json
 )
 
 # Run the command with all arguments
