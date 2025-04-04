@@ -35,9 +35,9 @@ args=(
 
     # Training Hyperparameters
     --num_train_epochs 5
-    --per_device_train_batch_size 2
-    --per_device_eval_batch_size 2
-    --gradient_accumulation_steps 4
+    --per_device_train_batch_size 4
+    --per_device_eval_batch_size 4
+    --gradient_accumulation_steps 2
     --learning_rate 1e-4
     --lr_scheduler_type cosine
     --warmup_steps 250
