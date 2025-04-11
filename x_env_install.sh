@@ -27,7 +27,7 @@ cd ..
 # Install vllm
 # Building from source is complicated.
 # We install the latest pre-built version and replace changed python files
-pip install vllm -U -i https://mirrors.aliyun.com/pypi/simple
+pip install vllm==0.7.3 -i https://mirrors.aliyun.com/pypi/simple
 # You cannot run this in vllm-slide, or VLLM_DIR will be wrong
 export VLLM_DIR=$(dirname $(python -c "import vllm; print(vllm.__file__)"))
 cp vllm-slider/vllm/model_executor/models/qwen2.py $VLLM_DIR/model_executor/models/qwen2.py
