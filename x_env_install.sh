@@ -24,6 +24,9 @@ cd transformers-slider
 pip install -e .
 cd ..
 
+# Install bnb
+pip install bitsandbytes==0.45.5
+
 # Install vllm
 # Building from source is complicated.
 # We install the latest pre-built version and replace changed python files
